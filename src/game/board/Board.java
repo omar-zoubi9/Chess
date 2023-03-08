@@ -4,8 +4,6 @@ import inputManaging.Move.SquareId;
 import pieces.ChessPiece;
 import pieces.King;
 
-import static game.GameManager.gameManager;
-
 public class Board {
     private SquareId player1KingSquare;
     private SquareId player2KingSquare;
@@ -34,16 +32,16 @@ public class Board {
     public boolean squareHasAPiece(SquareId squareToCheck){
         return squares[squareToCheck.getYCoordinate()][squareToCheck.getXCoordinate()].getPiece() != null;
     }
-    public void removePiece(SquareId fromSquare){
+    public void removePieceFromSquare(SquareId fromSquare){
         squares[fromSquare.getYCoordinate()][fromSquare.getXCoordinate()].removePiece();
     }
-    public void copyPiece(SquareId fromSquare , SquareId toSquare){
+    public void copyPieceFromSquare(SquareId fromSquare , SquareId toSquare){
         squares[toSquare.getYCoordinate()][toSquare.getXCoordinate()].
                 setChessPiece(squares[fromSquare.getYCoordinate()][fromSquare.getXCoordinate()].getPiece());
     }
-    public void movePiece(SquareId fromSquare , SquareId toSquare){
-        copyPiece(fromSquare , toSquare);
-        removePiece(fromSquare);
+    public void movePieceFromSquare(SquareId fromSquare , SquareId toSquare){
+        copyPieceFromSquare(fromSquare , toSquare);
+        removePieceFromSquare(fromSquare);
         if(squares[toSquare.getYCoordinate()][toSquare.getXCoordinate()].getPiece() instanceof King) {
             if (squares[toSquare.getYCoordinate()][toSquare.getXCoordinate()].getPiece().getPlayerID() == 1)
                 setPlayer1KingSquareId(toSquare);

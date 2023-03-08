@@ -24,7 +24,7 @@ public class CommandManager {
         chain3.setNextInChain(chain4);
         helper = new Helper();
     }
-    private void initializeMove(String[] moveCommand,int playerId){
+    private void initializeMoveObject(String[] moveCommand, int playerId){
         SquareId srcSquareId = new SquareId();
         srcSquareId.setYCoordinate(moveCommand[1].charAt(0) - '1');
         srcSquareId.setXCoordinate(moveCommand[1].charAt(1) - 'A');
@@ -46,14 +46,14 @@ public class CommandManager {
                 helper.printHelpForWrongNonValidCommand();
                 return;
             }
-            initializeMove(command, gameManager.getPlayerIdWhoseTurnIsNow());
+            initializeMoveObject(command, gameManager.getPlayerIdWhoseTurnIsNow());
             ChessPiece pieceToBeMoved = board.getSquare(move.getSrcSquareId()).getPiece();
             if(pieceToBeMoved == null){
                 System.out.println("source square doesn't hava a piece");
             }else if(pieceToBeMoved.getPlayerID() != turnForPlayerWithID){
                 System.out.println("you can't move an enemy piece");
             }else if(chain1.isValid(move)){
-                board.movePiece(move.getSrcSquareId() , move.getDestSquareId());
+                board.movePieceFromSquare(move.getSrcSquareId() , move.getDestSquareId());
                 gameManager.changeTurn();
             }
         }else{

@@ -34,13 +34,13 @@ public class EnPassantValidator implements IValidationChain {
                 enemySquare.setYCoordinate(move.getSrcSquareId().getYCoordinate());
                 enemySquare.setXCoordinate(move.getSrcSquareId().getXCoordinate()+1);
                 if(isEnemyPawnEligibleForEnPassant((Pawn) wayChecker.getPieceToBeMoved()))
-                    board.removePiece(enemySquare);
+                    board.removePieceFromSquare(enemySquare);
                 return true;
             }else if(wayChecker.isDestOneMoveAwayOnTopLeft() && wayChecker.isThereAnEnemyPawnOneMoveAwayOnLeft()){
                 enemySquare.setYCoordinate(move.getSrcSquareId().getYCoordinate());
                 enemySquare.setXCoordinate(move.getSrcSquareId().getXCoordinate()-1);
                 if(isEnemyPawnEligibleForEnPassant((Pawn) wayChecker.getPieceToBeMoved()))
-                    board.removePiece(enemySquare);
+                    board.removePieceFromSquare(enemySquare);
                 return true;
             }
         }else if(move.isPlayer2Turn() && pieceToCheck instanceof Pawn){
@@ -48,13 +48,13 @@ public class EnPassantValidator implements IValidationChain {
                 enemySquare.setYCoordinate(move.getSrcSquareId().getYCoordinate());
                 enemySquare.setXCoordinate(move.getSrcSquareId().getXCoordinate()+1);
                 if(isEnemyPawnEligibleForEnPassant((Pawn) wayChecker.getPieceToBeMoved()))
-                    board.removePiece(enemySquare);
+                    board.removePieceFromSquare(enemySquare);
                 return true;
             }else if(wayChecker.isDestOneMoveAwayOnBotLeft() && wayChecker.isThereAnEnemyPawnOneMoveAwayOnLeft()){
                 enemySquare.setYCoordinate(move.getSrcSquareId().getYCoordinate());
                 enemySquare.setXCoordinate(move.getSrcSquareId().getXCoordinate()-1);
                 if(isEnemyPawnEligibleForEnPassant((Pawn) wayChecker.getPieceToBeMoved()))
-                    board.removePiece(enemySquare);
+                    board.removePieceFromSquare(enemySquare);
                 return true;
             }
         }

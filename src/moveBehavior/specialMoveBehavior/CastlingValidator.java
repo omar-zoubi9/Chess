@@ -38,7 +38,7 @@ public class CastlingValidator implements IValidationChain {
                 rookSrcSquare.setXCoordinate(7);
                 rookDestSquare.setYCoordinate(0);
                 rookDestSquare.setXCoordinate(5);
-                board.movePiece(rookSrcSquare , rookDestSquare);
+                board.movePieceFromSquare(rookSrcSquare , rookDestSquare);
                 return true;
             }else if(wayChecker.isDestTwoMovesAwayOnLeft() && board.getSquare(0,3).getPiece() == null && board.getSquare(0,0).getPiece() instanceof Rook
                     && !((Rook) board.getSquare(0,0).getPiece()).isMoved()){
@@ -47,7 +47,7 @@ public class CastlingValidator implements IValidationChain {
                 rookDestSquare.setYCoordinate(0);
                 rookDestSquare.setXCoordinate(3);
 
-                board.movePiece(rookSrcSquare , rookDestSquare);
+                board.movePieceFromSquare(rookSrcSquare , rookDestSquare);
                 return true;
             }
         }else if(move.isPlayer2Turn() && pieceToCheck instanceof King && !((King) pieceToCheck).isMoved()){
@@ -58,7 +58,7 @@ public class CastlingValidator implements IValidationChain {
                 rookDestSquare.setYCoordinate(7);
                 rookDestSquare.setXCoordinate(5);
 
-                board.movePiece(rookSrcSquare , rookDestSquare);
+                board.movePieceFromSquare(rookSrcSquare , rookDestSquare);
                 return true;
             }else if(wayChecker.isDestTwoMovesAwayOnLeft() && board.getSquare(7,3).getPiece() == null && board.getSquare(7,0).getPiece() instanceof Rook
                     && !((Rook) board.getSquare(0,0).getPiece()).isMoved()){
@@ -67,7 +67,7 @@ public class CastlingValidator implements IValidationChain {
                 rookDestSquare.setYCoordinate(7);
                 rookDestSquare.setXCoordinate(3);
 
-                board.movePiece(rookSrcSquare , rookDestSquare);
+                board.movePieceFromSquare(rookSrcSquare , rookDestSquare);
                 return true;
             }
         }
